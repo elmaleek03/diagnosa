@@ -1,6 +1,7 @@
 import 'package:diagnosa/model/model.dart';
 import 'package:diagnosa/services/services.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:loader_overlay/loader_overlay.dart';
 
 class HitungPage extends StatefulWidget {
@@ -42,15 +43,23 @@ class _HitungPageState extends State<HitungPage> {
                         padding: EdgeInsets.all(8.0),
                         child: TextFormField(
                           controller: _controllers[index],
+                          keyboardType:
+                              TextInputType.numberWithOptions(decimal: true),
                           decoration: InputDecoration(
                             labelText: inputField,
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(10.0),
                             ),
                           ),
+                          inputFormatters: <TextInputFormatter>[
+                            FilteringTextInputFormatter.allow(
+                                RegExp(r'^\d*\.?\d*')),
+                          ],
                           validator: (value) {
                             if (value == null || value.isEmpty) {
-                              return 'Please enter some text';
+                              return 'Harap Isi dengan benar';
+                            } else if (double.tryParse(value) == null) {
+                              return 'Harap isi dengan benar';
                             }
                             return null;
                           },
