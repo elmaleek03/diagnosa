@@ -1,3 +1,4 @@
+import 'package:diagnosa/data/data.dart';
 import 'package:diagnosa/hitung_page.dart';
 import 'package:diagnosa/model/model.dart';
 import 'package:flutter/material.dart';
@@ -10,29 +11,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  List<Menu> menuUtama = [
-    Menu(judul: 'Diabetes', endpoint: 'predict/diabetes', textInput: [
-      "pregnancies",
-      "glucose",
-      "blood_pressure",
-      "skin_thickness",
-      "insulin",
-      "bmi",
-      "diabetes_pedigree_function",
-      "age"
-    ]),
-    Menu(judul: 'Sindrom Gopud', endpoint: 'predict/diabetes', textInput: [
-      "pregnancies",
-      "glucose",
-      "blood_pressure",
-      "skin_thickness",
-      "insulin",
-      "bmi",
-      "diabetes_pedigree_function",
-      "age"
-    ]),
-  ];
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -42,7 +20,7 @@ class _HomePageState extends State<HomePage> {
       body: SafeArea(
         child: GridView.builder(
           padding: const EdgeInsets.all(10.0),
-          itemCount: menuUtama.length,
+          itemCount: Data.menuUtama.length,
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2,
             crossAxisSpacing: 10.0,
@@ -58,10 +36,10 @@ class _HomePageState extends State<HomePage> {
                         context,
                         MaterialPageRoute(
                             builder: (context) => HitungPage(
-                                  dataMenu: menuUtama[index],
+                                  dataMenu: Data.menuUtama[index],
                                 )));
                   },
-                  child: Text(menuUtama[index].judul.toString()),
+                  child: Text(Data.menuUtama[index].judul.toString()),
                   style: ElevatedButton.styleFrom(
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10),
