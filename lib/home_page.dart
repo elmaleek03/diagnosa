@@ -1,6 +1,5 @@
 import 'package:diagnosa/data/data.dart';
 import 'package:diagnosa/hitung_page.dart';
-import 'package:diagnosa/model/model.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {

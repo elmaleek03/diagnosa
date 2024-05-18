@@ -1,3 +1,5 @@
+import 'package:diagnosa/custom_input.dart';
+
 class DiabetesResponse {
   final String? result;
   final String? status;
@@ -22,14 +24,21 @@ class DiabetesResponse {
   }
 }
 
+class BeaCukaiCihuy {
+  final List<CustomInputWidget> customInput;
+  final String judulInput;
+
+  BeaCukaiCihuy({required this.customInput, required this.judulInput});
+}
+
 class Menu {
-  final String? judul;
-  final String? endpoint;
-  final List<String>? textInput;
+  final String judul;
+  final String endpoint;
+  final List<CustomInputWidget> customInput;
 
   Menu({
-    this.judul,
-    this.endpoint,
-    this.textInput,
+    required this.judul,
+    required this.endpoint,
+    required this.customInput,
   });
 }
